@@ -22,6 +22,7 @@ export const HomePage = (props: any) => {
                         name={item.name}
                         price={item.price}
                         imageUrl={item.imageUrl}
+                        types={item.types}
                     />)
                 }
             </div>

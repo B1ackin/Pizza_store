@@ -1,15 +1,18 @@
 import React, {SetStateAction, useState} from 'react'
+import classNames from 'classnames'
+import {types} from "util";
 
 
 type PropsType = {
     name: string
     price: string
     imageUrl: string
+    types: number[]
 }
 
 export const PizzaBlock = (props: PropsType) => {
     const typeNames = ['тонкое', 'традиционное']
-    const [activeType, setAtiveType] = useState(0)
+    const [activeType, setAtiveType] = useState(props.types[0])
 
     const onSelectItem = (index: SetStateAction<number>) => {
         setAtiveType(index)
@@ -31,7 +34,10 @@ export const PizzaBlock = (props: PropsType) => {
                                 <li
                                     key={type}
                                     onClick={() => onSelectItem(index)}
-                                    className={activeType === index ? 'active' : ''}
+                                    className={classNames({
+                                        active: activeType === index,
+                                        disabled: !props.types.includes(index)
+                                    })}
                                 >
                                     {type}
                                 </li>
