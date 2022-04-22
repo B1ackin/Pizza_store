@@ -17,7 +17,12 @@ export const HomePage = (props: any) => {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    props.items.map((item: any) => <PizzaBlock />)
+                    props.items.map((item: any) => <PizzaBlock
+                        key={item.id}
+                        name={item.name}
+                        price={item.price}
+                        imageUrl={item.imageUrl}
+                    />)
                 }
             </div>
         </div>
