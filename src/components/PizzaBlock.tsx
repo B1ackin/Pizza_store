@@ -8,14 +8,20 @@ type PropsType = {
     price: string
     imageUrl: string
     types: number[]
+    sizes: number[]
 }
 
 export const PizzaBlock = (props: PropsType) => {
     const typeNames = ['тонкое', 'традиционное']
+    const availableSize = [26, 30, 40]
     const [activeType, setAtiveType] = useState(props.types[0])
+    const [activeSize, setAtiveSize] = useState(props.sizes[0])
 
     const onSelectItem = (index: SetStateAction<number>) => {
         setAtiveType(index)
+    }
+    const onSelectSize = (index: SetStateAction<number>) => {
+        setAtiveSize(index)
     }
 
 
@@ -45,9 +51,20 @@ export const PizzaBlock = (props: PropsType) => {
                         }
                     </ul>
                     <ul>
-                        <li className="active">26 см.</li>
-                        <li>30 см.</li>
-                        <li>40 см.</li>
+                        {
+                            availableSize.map((size, index) => (
+                                <li
+                                    key={size}
+                                    onClick={() => onSelectSize(index)}
+                                    className={classNames({
+                                        active: activeSize === index,
+                                        disabled: !props.sizes.includes(size)
+                                    })}
+                                >
+                                    {size} см.
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
                 <div className="pizza-block__bottom">
