@@ -8,7 +8,7 @@ import axios from "axios";
 
 
 function App() {
-    const [pizzas, setPizzas] = useState([])
+
 
     useEffect(() => {
         axios.get("http://localhost:3000/db.json")

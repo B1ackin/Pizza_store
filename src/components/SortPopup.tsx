@@ -1,8 +1,12 @@
 import React, {SetStateAction, useEffect, useRef, useState} from 'react'
 
+type ItemPropsType = {
+    name: string,
+    type: string
+}
 
 type PropsSortType = {
-    items: string[]
+    items: Array<ItemPropsType>
 }
 
 
@@ -10,7 +14,7 @@ export function SortPopup (props: PropsSortType) {
     const [visiblePopup, setVisiblePopun] = useState(false)
     const [activeItem, setActiveItem] = useState(0)
     const softRef = useRef(null)
-    const activeLabel = props.items[activeItem]
+    const activeLabel = props.items[activeItem].name
 
 
     const toggleVisiblePopup = () => {
@@ -56,9 +60,9 @@ export function SortPopup (props: PropsSortType) {
                     visiblePopup && <div className="sort__popup">
                         <ul>
                             {props.items &&
-                                props.items.map((name, index) => (
+                                props.items.map((obj, index) => (
                                     <li onClick={() => onSelectItem(index)} className={activeItem === index ? 'active' : ''}
-                                        key={index}>{name}</li>
+                                        key={obj.type}>{obj.name}</li>
                                 ))
 
                             }
