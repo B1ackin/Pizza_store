@@ -1,4 +1,4 @@
-import React, {SetStateAction, useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 
 type ItemPropsType = {
     name: string,
@@ -10,7 +10,7 @@ type PropsSortType = {
 }
 
 
-export function SortPopup (props: PropsSortType) {
+export const SortPopup = React.memo((props: PropsSortType) => {
     const [visiblePopup, setVisiblePopun] = useState(false)
     const [activeItem, setActiveItem] = useState(0)
     const softRef = useRef(null)
@@ -73,4 +73,4 @@ export function SortPopup (props: PropsSortType) {
             </div>
         </div>
     )
-}
+})

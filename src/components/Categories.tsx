@@ -6,12 +6,13 @@ type CategorieType = {
 }
 
 
-export const Categories = (props:CategorieType) => {
+export const Categories = React.memo((props:CategorieType) => {
 
     const [activeItem, setActiveItem] = useState<SetStateAction<null | number>>(null)
 
-    const onSelectItem = (index: SetStateAction<null | number>) => {
+    const onSelectItem = (index: SetStateAction<any>) => {
         setActiveItem(index)
+        props.onClickItem(index)
     }
 
     return (
@@ -27,4 +28,4 @@ export const Categories = (props:CategorieType) => {
             </ul>
         </div>
     )
-}
+})

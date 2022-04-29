@@ -3,12 +3,11 @@ import {filterReducer} from "./reducers/filter";
 import {pizzasReducer} from "./reducers/pizzas";
 
 export const rootReducer = combineReducers({
-    filter: filterReducer,
-    pizza: pizzasReducer
+    filters: filterReducer,
+    pizzas: pizzasReducer,
 })
 
-
-const store = createStore(rootReducer)
+export const store = createStore(rootReducer)
 
 
 export default store
