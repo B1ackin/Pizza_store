@@ -1,6 +1,7 @@
 import React, {SetStateAction, useState} from 'react'
 import classNames from 'classnames'
 import {types} from "util";
+import LoadingBlock from "./LoadingBlock";
 
 
 type PropsType = {
@@ -9,6 +10,7 @@ type PropsType = {
     imageUrl: string
     types: number[]
     sizes: number[]
+    isLoaded: boolean
 }
 
 export const PizzaBlock = (props: PropsType) => {
@@ -16,6 +18,7 @@ export const PizzaBlock = (props: PropsType) => {
     const availableSize = [26, 30, 40]
     const [activeType, setAtiveType] = useState(props.types[0])
     const [activeSize, setAtiveSize] = useState(props.sizes[0])
+
 
     const onSelectItem = (index: SetStateAction<number>) => {
         setAtiveType(index)
