@@ -8,7 +8,7 @@ export const Button = (props: any) => {
             className={ClassNames('button', props.className, {
                 'button--outline': props.outline,
             })}
-            >{props.children}
+            >{props.children}{props.children}
             </button>
         )
 }
